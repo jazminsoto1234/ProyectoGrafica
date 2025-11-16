@@ -12,7 +12,7 @@ def _list_images(folder):
 
 def stitch_from_folder(input_dir, output_path, mode="panorama", conf_thresh=0.6, work_megapix=0.6, compose_megapix=-1, verbose=True):
     """
-    Cose todas las imágenes de una carpeta (ej: UNDISTORTED/) y guarda un panorama.
+    Cose todas las imágenes de una carpeta y guarda un panorama.
     Entradas:
       - input_dir (str|Path): carpeta con imágenes (ordenadas preferentemente)
       - output_path (str|Path): ruta del archivo de salida (ej: .../panorama.jpg)
@@ -51,9 +51,7 @@ def stitch_from_folder(input_dir, output_path, mode="panorama", conf_thresh=0.6,
     else:
         stitcher = cv2.Stitcher_create(cv2.STITCHER_PANORAMA)
 
-    # Ajustes útiles
-    # (Nota: la API de Stitcher en OpenCV varía por versión; si tu build no expone setters,
-    # puedes omitirlos sin problema.)
+    
     try:
         stitcher.setPanoConfidenceThresh(conf_thresh)
     except Exception:
